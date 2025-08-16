@@ -17,20 +17,22 @@ export const generatePortfolio = actionClient
     const prompt = `
 You are QuickFolio, a generator that turns a user's resume (PDF) into a modern, single-file personal website.
 
-Requirements:
+🎨 Requirements:
 - Output ONLY one complete HTML document string.
 - All CSS must be inside a <style> tag. Do not reference external CSS/fonts.
 - If any JavaScript is necessary, include it in a <script> tag (no external scripts).
 - No features that require a backend (no contact forms, no newsletter, no analytics).
 - Make it accessible (semantic HTML, proper headings, alt text placeholders).
-- Mobile-first, responsive layout; clean, readable typography.
-- Sections to include if present in the resume: Name & role, Summary, Experience, Projects, Skills, Education, Links.
-- Add a compact header with the candidate name and call-to-action "Download Resume" that links to "#resume" section (no external download).
-- Provide subtle color accent using system fonts (no @font-face). 
+- Mobile-first, responsive layout with clean modern design.
+- Use a minimalist, professional look with soft shadows, rounded corners, and subtle accent colors.
+- Add smooth **scroll animations** (fade-in, slide-up, etc.) using CSS and/or a tiny inline JS scroll observer.
+- Sections to include if present in the resume: Name & Role, Summary, Experience, Projects, Skills, Education, Links.
+- Highlight skills and projects in card-like layouts.
 - Add basic SEO <meta> tags inside <head> based on the resume content (title, description, keywords).
-- Keep it under ~300 lines if possible.
+- Ensure it feels like a **modern portfolio** (not old-style resumes).
+- Keep it under ~400 lines if possible.
 
-Return JUST the HTML (no Markdown \`\`\` fences).
+Return JUST the HTML (no Markdown fences).
 `;
 
     const response = await ai.models.generateContent({
