@@ -7,13 +7,13 @@ import {
   DropzoneTrigger,
   useDropzone,
 } from "@/components/ui/dropzone";
-import { Loader2, UploadIcon } from "lucide-react";
+import { Loader2, UploadIcon, X } from "lucide-react";
 import { toast } from "sonner";
 import { useAction } from "next-safe-action/hooks";
 import { generatePortfolio } from "@/server/action";
 import { Button } from "./ui/button";
 import { useState } from "react";
-import { portfolio } from "@/test/portfolio";
+import { portfolio } from "@/sample/portfolio";
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -85,13 +85,21 @@ export default function Form() {
           <p className="text-sm">Generating your portfolio...</p>
         </div>
       ) : portfolioHTML ? (
-        <div className="flex flex-col gap-6">
-          <div className="w-full overflow-hidden border rounded-lg shadow h-80">
+        <div className="relative flex flex-col gap-6">
+          <div className="relative w-full overflow-hidden border rounded-lg shadow h-80">
             <iframe
               srcDoc={portfolioHTML}
               title="Portfolio Preview"
               className="w-full h-full border-0"
             />
+            <Button
+              size="icon"
+              variant="ghost"
+              className="absolute text-white rounded-full shadow-md cursor-pointer bg-rose-600 top-3 right-3 hover:bg-rose-700"
+              onClick={() => setPortfolioHTML(null)}
+            >
+              <X className="w-4 h-4" />
+            </Button>
           </div>
 
           <div className="flex justify-center gap-4">
