@@ -3,321 +3,413 @@ export const portfolio = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Momin Mohammed Arfat - Full Stack Web Developer</title>
-    <meta name="description" content="Momin Mohammed Arfat, a Full Stack web developer passionate about crafting user-friendly experiences using HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Redux, Prisma, MongoDB, PostgreSQL, Tailwind CSS, Firebase, Git and Github.">
-    <meta name="keywords" content="Full Stack Developer, Web Developer, JavaScript, TypeScript, ReactJS, NextJS, Node.js, HTML, CSS, MongoDB, PostgreSQL, Firebase, Git, GitHub, Momin Mohammed Arfat, Portfolio, Projects, Software Engineer">
+    <meta name="description" content="Mohammed Arfat - Full Stack Developer portfolio. Showcasing projects, skills in HTML, CSS, JavaScript, ReactJS, NextJS, MongoDB, and more.">
+    <meta name="keywords" content="Mohammed Arfat, Full Stack Developer, web development, ReactJS, NextJS, JavaScript, HTML, CSS, MongoDB, PostgreSQL, web portfolio">
+    <meta property="og:title" content="Mohammed Arfat | Full Stack Developer">
+    <meta property="og:description" content="Mohammed Arfat - Full Stack Developer portfolio. Showcasing projects, skills in HTML, CSS, JavaScript, ReactJS, NextJS, MongoDB, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mdarfat.vercel.app"> <!-- Replace with your actual portfolio URL -->
+    <title>Mohammed Arfat | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-text: #333;
-            --secondary-text: #555;
-            --accent-color: #007bff; /* A nice, clean blue */
-            --background-color: #f8f8f8;
-            --card-background: #fff;
-            --border-color: #eee;
+            --bg-color: #FDFBF8; /* Very light beige */
+            --text-color: #3F2E3E; /* Dark brown/charcoal */
+            --card-bg: #FFFFFF; /* Pure white for contrast on cards */
+            --accent-color: #A67B5B; /* Warm beige/brown accent */
+            --link-color: #A67B5B;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* Basic Reset & Body Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: var(--font-family);
             line-height: 1.6;
-            color: var(--primary-text);
-            background-color: var(--background-color);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            scroll-behavior: smooth;
         }
 
-        header {
-            background-color: var(--card-background);
-            padding: 1rem 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        header .name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-text);
-        }
-
-        .button {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s ease;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        main {
-            padding: 1.5rem;
+        .container {
             max-width: 900px;
-            margin: 20px auto;
-            background-color: var(--card-background);
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        section {
-            margin-bottom: 2rem;
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--primary-text);
-            margin-top: 0;
-            margin-bottom: 1rem;
+        a:hover {
+            filter: brightness(0.85); /* Darken on hover */
+        }
+
+        h1, h2, h3 {
+            color: var(--text-color);
+            margin-bottom: 15px;
             font-weight: 600;
         }
 
-        h1 { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 0.5rem; }
-        h2 { font-size: 1.8rem; color: var(--secondary-text); margin-bottom: 1.5rem; }
-        h3 { font-size: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem; }
-        h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-        h5 { font-size: 1rem; color: var(--secondary-text); margin-bottom: 0.25rem; }
-
-        p {
-            margin-bottom: 1rem;
+        h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 5px;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            display: inline-block;
+            margin-bottom: 30px;
         }
 
-        ul li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
+        h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
         }
 
-        ul li::before {
-            content: '•';
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            margin-bottom: 40px;
+        }
+
+        header .role {
+            font-size: 1.3em;
             color: var(--accent-color);
-            position: absolute;
-            left: 0;
-        }
-
-        .meta-info {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
-            margin-bottom: 1rem;
-        }
-
-        .project-item, .experience-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px dashed var(--border-color);
-        }
-
-        .project-item:last-child, .experience-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .project-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            margin-right: 1rem;
-        }
-
-        .project-links a:hover {
-            text-decoration: underline;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            white-space: nowrap;
+            margin-bottom: 20px;
         }
 
         .social-links {
+            margin-top: 20px;
             display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
             justify-content: center;
+            gap: 20px;
         }
 
         .social-links a {
-            color: var(--secondary-text);
-            text-decoration: none;
-            transition: color 0.2s ease;
-            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--card-bg);
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-color);
+            transform: translateY(-3px);
+            background-color: var(--text-color);
         }
 
-        /* Basic icon-like representations for LinkedIn and GitHub */
-        .icon-linkedin::before { content: "in"; font-size: 1.4em; border: 2px solid; padding: 0 0.2em; border-radius: 3px; vertical-align: middle; }
-        .icon-github::before { content: "Git"; font-size: 1.4em; border: 2px solid; padding: 0 0.2em; border-radius: 3px; vertical-align: middle; }
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
 
+        /* Sections */
+        .section {
+            background-color: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .skill-card {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .skill-card li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-size: 1.2em;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--bg-color);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            margin-bottom: 10px;
+        }
+        .project-card p {
+            font-size: 0.9em;
+        }
+
+        /* Experience & Education */
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+        .experience-item:last-child, .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item h3, .education-item h3 {
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+        .experience-item .company, .education-item .institution {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+        .experience-item .dates {
+            font-size: 0.85em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #777;
+            font-size: 0.9em;
+            margin-top: 40px;
+            background-color: var(--card-bg);
+            box-shadow: 0 -4px 10px var(--shadow-color);
+        }
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            header .name {
-                margin-bottom: 0.5rem;
-            }
-            main {
-                margin: 10px;
-                padding: 1rem;
-            }
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            h3 { font-size: 1.3rem; }
-            h4 { font-size: 1.1rem; }
-            .social-links {
-                gap: 1rem;
-                font-size: 0.9em;
-            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="name">Momin Mohammed Arfat</div>
-        <a href="#resume-content" class="button">Download Resume</a>
+    <header id="home" class="fade-in">
+        <div class="container">
+            <h1>Mohammed Arfat</h1>
+            <p class="role">Full Stack Developer</p>
+            <div class="social-links">
+                <a href="https://github.com/mdarfatwork" target="_blank" aria-label="GitHub Profile" rel="noopener noreferrer">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.2 3.633 17.2 3.633 17.2c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.013 24 17.514 24 12.297c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/momin-mohammed-arfat/" target="_blank" aria-label="LinkedIn Profile" rel="noopener noreferrer">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.325-.028-3.044-1.852-3.044-1.853 0-2.136 1.445-2.136 2.951v5.662H9.596V9.609h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9.609h3.564v10.843zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454c.979 0 1.771-.773 1.771-1.729V1.729C24 .774 23.208 0 22.225 0z"/></svg>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main id="resume-content">
-        <section id="hero">
-            <h1>Momin Mohammed Arfat</h1>
-            <h2>Full Stack Web Developer</h2>
-            <div class="meta-info">
-                <p>Sr. No. 58/2, Plot No.26, Naya Islampura, Malegaon, Dist. Nashik, MH - 423203</p>
-                <p><strong>Phone:</strong> <a href="tel:+917020660977">+91 702066 0977</a></p>
-                <p><strong>Email:</strong> <a href="mailto:arfat19118@gmail.com">arfat19118@gmail.com</a></p>
+    <main class="container">
+        <section id="about" class="section slide-up">
+            <h2>About Me</h2>
+            <p>I'm Arfat, a Full Stack web developer based in Malegaon. My skills include HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Redux, Prisma, MongoDB, PostgreSQL and Tailwind CSS. I'm passionate about web development and continuously learn to craft user-friendly experiences. Check my github for new projects. I've completed projects like a Netflix clone and an e-commerce web app, showcasing my dedication to practical learning and my tech stack is regularly updated. I'm eager to join a dynamic team, contributing creativity and technical expertise to innovate and captivate users through web development.</p>
+        </section>
+
+        <section id="skills" class="section slide-up">
+            <h2>Skills & Proficiencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Technologies</h3>
+                    <ul>
+                        <li>HTML, CSS, JavaScript, TypeScript</li>
+                        <li>ReactJS, NextJS, Tailwind CSS, Redux</li>
+                        <li>Prisma, MongoDB, PostgreSQL, Firebase</li>
+                        <li>Git and Github</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Soft Skills</h3>
+                    <ul>
+                        <li>Teamwork, multitasking, attention to detail</li>
+                        <li>Front end web development</li>
+                        <li>Good Knowledge of Prompt Engineering to increase efficiency</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section id="about">
-            <h3>About Me</h3>
-            <p>I'm Arfat, a Full Stack web developer based in Malegaon. My skills include HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Redux, Prisma, MongoDB, PostgreSQL and Tailwind CSS. I'm passionate about web development and continuously learn to craft user-friendly experiences. I've completed projects like a Netflix clone and an e-commerce web app, showcasing my dedication to practical learning and my tech stack is regularly updated. I'm eager to join a dynamic team, contributing creativity and technical expertise to innovate and captivate users through web development.</p>
-        </section>
-
-        <section id="skills">
-            <h3>Skills & Proficiencies</h3>
-            <div class="skills-list">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">ReactJS</span>
-                <span class="skill-tag">NextJS</span>
-                <span class="skill-tag">Tailwind CSS</span>
-                <span class="skill-tag">Redux</span>
-                <span class="skill-tag">Prisma</span>
-                <span class="skill-tag">MongoDB</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">Firebase</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Github</span>
-                <span class="skill-tag">Teamwork</span>
-                <span class="skill-tag">Multitasking</span>
-                <span class="skill-tag">Attention to Detail</span>
-                <span class="skill-tag">Front-end Web Development</span>
-                <span class="skill-tag">Prompt Engineering</span>
+        <section id="projects" class="section slide-up">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Data Visualization Dashboard</h3>
+                    <p>
+                        <a href="https://github.com/mdarfatwork/Data-Visualization-Dashboard" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                        <a href="https://data-visualization-dashboard-pi.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Streamix (Movie listing and Streaming)</h3>
+                    <p>
+                        <a href="https://github.com/mdarfatwork/streamix" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                        <a href="https://streamix-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Eshop (E-commerce Web app)</h3>
+                    <p>
+                        <a href="https://github.com/mdarfatwork/eShop" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                        <a href="https://eshoparfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Arfat Chat (Real Time Chatting Web App)</h3>
+                    <p>
+                        <a href="https://github.com/mdarfatwork/chat" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                        <a href="https://chat-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Notion Clone</h3>
+                    <p>
+                        <a href="https://github.com/mdarfatwork/notion-clone" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                        <a href="https://notion-clone-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3>Email Client (Email Client UI)</h3>
+                    <p>
+                        <a href="https://github.com/mdarfatwork/EmailClientAppReactJS" target="_blank" rel="noopener noreferrer">GitHub</a> |
+                        <a href="https://email-client-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </p>
+                </div>
             </div>
         </section>
 
-        <section id="experience">
-            <h3>Experience</h3>
+        <section id="experience" class="section slide-up">
+            <h2>Experience</h2>
             <div class="experience-item">
-                <h4>Engineer Inter</h4>
-                <h5>Luis - Freelance (Remote)</h5>
-                <p>Feb 2025 - Ongoing</p>
-                <p>Working with Luis, a freelancer from Mexico, on ongoing projects, learning through hands-on work.</p>
+                <h3>Engineer Intern</h3>
+                <p class="company">Luis - Remote</p>
+                <p class="dates">Feb 2025 - Ongoing</p>
+                <p>Collaborating with a freelancer from Mexico on ongoing projects, gaining hands-on experience in web development.</p>
             </div>
             <div class="experience-item">
-                <h4>Graphic Designer Inter</h4>
-                <h5>FRIZZY FASHIONISTA - Remote</h5>
-                <p>Duration: 24 Weeks</p>
+                <h3>Graphic Designer Intern</h3>
+                <p class="company">FRIZZY FASHIONISTA - Remote</p>
+                <p class="dates">24 Weeks</p>
+                <p>Contributed to graphic design projects for FRIZZY FASHIONISTA.</p>
             </div>
         </section>
 
-        <section id="projects">
-            <h3>Projects</h3>
-            <div class="project-item">
-                <h4>Data Visualization Dashboard</h4>
-                <div class="project-links">
-                    <a href="https://github.com/mdarfatwork/Data-Visualization-Dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://data-visualization-dashboard-pi.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                </div>
+        <section id="education" class="section slide-up">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>BA (Economic)</h3>
+                <p class="institution">Ongoing</p>
             </div>
-            <div class="project-item">
-                <h4>Streamix (Movie listing and Streaming)</h4>
-                <div class="project-links">
-                    <a href="https://github.com/mdarfatwork/streamix" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://streamix-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                </div>
-            </div>
-            <div class="project-item">
-                <h4>Eshop (E-commerce Web app)</h4>
-                <div class="project-links">
-                    <a href="https://github.com/mdarfatwork/eShop" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://eshop-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                </div>
-            </div>
-            <div class="project-item">
-                <h4>Arfat Chat (Real Time Chatting Web App)</h4>
-                <div class="project-links">
-                    <a href="https://github.com/mdarfatwork/chat" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://chat-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                </div>
-            </div>
-            <div class="project-item">
-                <h4>Notion Clone</h4>
-                <div class="project-links">
-                    <a href="https://github.com/mdarfatwork/notion-clone" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://notion-clone-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                </div>
-            </div>
-            <div class="project-item">
-                <h4>Email Client (Email Client UI)</h4>
-                <div class="project-links">
-                    <a href="https://github.com/mdarfatwork/EmailClientAppReactJS" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="https://email-client-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                </div>
+            <div class="education-item">
+                <h3>12th (Science)</h3>
+                <p class="institution">2023</p>
             </div>
         </section>
-
-        <section id="education">
-            <h3>Education</h3>
-            <ul>
-                <li><strong>BA (Economic)</strong> - Ongoing</li>
-                <li><strong>12th (Science)</strong> - 2023</li>
-            </ul>
-        </section>
-
-        <footer>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/momin-mohammed-arfat" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="icon-linkedin"></a>
-                <a href="https://github.com/mdarfatwork" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile" class="icon-github"></a>
-            </div>
-        </footer>
     </main>
+
+    <footer class="fade-in">
+        <div class="container">
+            <p>&copy; 2024 Mohammed Arfat. All rights reserved.</p>
+            <p>Built with QuickFolio.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in, .slide-up');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
-</html>`
+</html>`;

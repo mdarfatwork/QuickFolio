@@ -10,9 +10,19 @@ const ai = new GoogleGenAI({
 
 export const generatePortfolio = actionClient
   .inputSchema(generatePortfolioSchema)
-  .action(async ({ parsedInput: { resume } }) => {
+  .action(async ({ parsedInput: { resume, preferredName, role, googleFont, instructions, socialLinks } }) => {
+    if (!resume) throw new Error("Resume is required");
     const bytes = new Uint8Array(await resume.arrayBuffer());
     const b64 = Buffer.from(bytes).toString("base64");
+
+    const customization = `
+User Customizations:
+- Preferred name: ${preferredName}
+- Role / Profession: ${role}
+${googleFont ? `- Font: ${googleFont}` : ""}
+${socialLinks?.length ? `- Social links: ${socialLinks.join(", ")}` : ""}
+${instructions ? `- Extra instructions: ${instructions}` : ""}
+`;
 
     const prompt = `
 You are QuickFolio, a generator that turns a user's resume (PDF) into a modern, single-file personal website.
@@ -28,9 +38,12 @@ You are QuickFolio, a generator that turns a user's resume (PDF) into a modern, 
 - Add smooth **scroll animations** (fade-in, slide-up, etc.) using CSS and/or a tiny inline JS scroll observer.
 - Sections to include if present in the resume: Name & Role, Summary, Experience, Projects, Skills, Education, Links.
 - Highlight skills and projects in card-like layouts.
-- Add basic SEO <meta> tags inside <head> based on the resume content (title, description, keywords).
+- Add basic SEO <meta> tags inside <head> based on the resume content (title, description, keywords) & OpenGraph tags.
 - Ensure it feels like a **modern portfolio** (not old-style resumes).
 - Keep it under ~400 lines if possible.
+- if user want any font you can only import it from google fonts.
+
+${customization}
 
 Return JUST the HTML (no Markdown fences).
 `;
@@ -60,7 +73,6 @@ Return JUST the HTML (no Markdown fences).
 
     return {
       status: "success" as const,
-      filename: "index.html",
       html,
     };
   });
