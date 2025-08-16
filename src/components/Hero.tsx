@@ -5,8 +5,7 @@ export default function Hero() {
     <section className="relative">
       <div className="container text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-          Turn Your{" "}
-          <span className="text-indigo-600">Resume</span> into a
+          Turn Your <span className="text-indigo-600">Resume</span> into a
           <br className="hidden sm:inline" /> Stunning Website — for Free
         </h1>
 
@@ -25,7 +24,7 @@ export default function Hero() {
           </Link>
           <a
             href="#demo"
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium transition border border-gray-300 rounded-full hover:bg-gray-100 hover:text-gray-900"
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-medium transition bg-white border border-gray-300 rounded-full hover:bg-gray-100 hover:text-gray-900"
           >
             See Demo
           </a>
