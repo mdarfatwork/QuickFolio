@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Arfat - Full Stack Developer Portfolio</title>
+    <meta name="description" content="Mohammed Arfat, a Full Stack Developer based in Malegaon. Expertise in HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Node.js, MongoDB, PostgreSQL. Explore projects and skills.">
+    <meta name="keywords" content="Mohammed Arfat, Full Stack Developer, Web Developer, React, Next.js, Node.js, JavaScript, TypeScript, Portfolio, Projects, Malegaon">
+    <meta name="author" content="Mohammed Arfat">
+
+    <!-- OpenGraph Tags for Social Media Sharing -->
+    <meta property="og:title" content="Mohammed Arfat - Full Stack Developer Portfolio">
+    <meta property="og:description" content="Mohammed Arfat, a Full Stack Developer based in Malegaon. Expertise in HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Node.js, MongoDB, PostgreSQL. Explore projects and skills.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Mohammed+Arfat+Portfolio"> <!-- Placeholder, replace with actual image -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #2563EB; /* Blue-600 */
+            --secondary-color: #F59E0B; /* Amber-500 */
+            --text-dark: #1E293B;
+            --background-light: #FFFFFF;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --border-radius-md: 8px;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            display: flex;
+            min-height: 100vh; /* Full viewport height */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            flex-direction: column; /* Default to column for mobile */
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Utility Classes for Animations */
+        .animated {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+        }
+
+        .slide-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-up {
+            transform: translateY(20px);
+        }
+
+        /* Layout for Desktop: Sidebar + Main Content */
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+            }
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background-color: var(--background-light);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow-light) 2px 0 5px;
+            min-width: 250px;
+            max-width: 100%; /* For mobile */
+            order: 1; /* Before main content on mobile */
+        }
+        @media (min-width: 768px) {
+            .sidebar {
+                position: sticky;
+                top: 0;
+                height: 100vh;
+                order: 0; /* Left on desktop */
+                overflow-y: auto;
+            }
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .sidebar-header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .sidebar-header p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar nav ul li a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            border-radius: var(--border-radius-md);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar nav ul li a:hover {
+            background-color: rgba(37, 99, 235, 0.1); /* Light blue hover */
+            color: var(--primary-color);
+        }
+
+        .sidebar .contact-info {
+            margin-top: var(--spacing-md);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar .contact-info p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .contact-info p svg {
+            margin-right: 8px;
+        }
+
+        .sidebar .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .sidebar .social-links a {
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: rgba(37, 99, 235, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .sidebar .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-light);
+        }
+        .sidebar .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            padding: var(--spacing-md);
+            overflow-y: auto;
+        }
+        @media (min-width: 768px) {
+            .main-content {
+                padding: var(--spacing-lg);
+            }
+        }
+
+        section {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        section:last-child {
+            border-bottom: none;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: var(--spacing-lg) var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            border-bottom: none; /* No border for hero */
+        }
+        .hero h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            border-bottom: none;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--background-light);
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: var(--shadow-light) 0 4px 6px;
+        }
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            color: var(--background-light);
+        }
+
+        /* General List Styling */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .skill-card {
+            background-color: var(--background-light);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light) 0 2px 4px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-light) 0 6px 12px;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-color);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-out;
+        }
+        .skill-card:hover::before {
+            transform: translateX(0);
+        }
+
+        /* Experience and Education Sections */
+        .job-entry, .education-entry {
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background-color: var(--background-light);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light) 0 2px 4px;
+        }
+        .job-entry h4, .education-entry h4 {
+            margin-bottom: 0.25rem;
+            color: var(--primary-color);
+        }
+        .job-entry p, .education-entry p {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        .job-entry ul {
+            list-style: disc;
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .job-entry ul li::before {
+            content: none;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .project-card {
+            background-color: var(--background-light);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-light) 0 4px 8px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-light) 0 8px 16px;
+        }
+
+        .project-card-content {
+            padding: var(--spacing-sm);
+        }
+
+        .project-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .project-links a {
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Prevent wrapping for small links */
+        }
+        .project-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-light);
+        }
+
+        /* Contact Section */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        .contact-item svg {
+            margin-right: 10px;
+            fill: var(--primary-color);
+            width: 24px;
+            height: 24px;
+        }
+        .contact-item a {
+            font-weight: 600;
+        }
+
+        .main-content .social-links {
+            margin-top: var(--spacing-md);
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: flex-start;
+        }
+        .main-content .social-links a {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: var(--border-radius-md);
+            padding: 0.75rem 1.25rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .main-content .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-light);
+        }
+        .main-content .social-links svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            opacity: 0.7;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar" aria-label="Sidebar Navigation">
+        <div class="sidebar-header">
+            <h1>Mohammed Arfat</h1>
+            <p>Full Stack Developer</p>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#about" aria-label="Scroll to About Me section">About Me</a></li>
+                <li><a href="#skills" aria-label="Scroll to Skills section">Skills</a></li>
+                <li><a href="#experience" aria-label="Scroll to Experience section">Experience</a></li>
+                <li><a href="#projects" aria-label="Scroll to Projects section">Projects</a></li>
+                <li><a href="#education" aria-label="Scroll to Education section">Education</a></li>
+                <li><a href="#contact" aria-label="Scroll to Contact section">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="contact-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.03 21 3 13.97 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.47.57 3.58.1.35.01.75-.25 1.02L6.62 10.79z" fill="currentColor"/></svg><a href="tel:+917020660977">+91 702066 0977</a></p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg><a href="mailto:arfat19118@gmail.com">arfat19118@gmail.com</a></p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>Malegaon, India</p>
+        </div>
+        <div class="social-links">
+            <a href="https://github.com/mdarfatwork" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.866 8.135 6.839 9.407.5.09.682-.217.682-.483 0-.238-.007-.872-.012-1.71-2.782.604-3.369-1.34-3.369-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.619.069-.607.069-.607 1.004.072 1.532 1.031 1.532 1.76.938.64 2.457.458 3.04.35.09-.271.35-1.031.637-1.268-2.336-.264-4.789-1.17-4.789-5.208 0-1.149.409-2.091 1.082-2.833-.109-.264-.47-1.341.103-2.793 0 0 .887-.284 2.903 1.08.84-.233 1.74-.35 2.64-.35.9 0 1.8.117 2.64.35 2.016-1.364 2.903-1.08 2.903-1.08.573 1.452.212 2.529.103 2.793.673.742 1.082 1.684 1.082 2.833 0 4.049-2.458 4.941-4.798 5.20.378.327.718.973.718 1.968 0 1.424-.012 2.573-.012 2.915 0 .268.18.577.688.484C21.137 20.134 24 16.42 24 12c0-5.523-4.477-10-10-10z"></path></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/momin-mohammed-arfat/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.34 20.42H3.5V8.04h3.84v12.38zM5.42 6.55c-1.22 0-2.22-.99-2.22-2.21S4.2 2.13 5.42 2.13c1.22 0 2.21.99 2.21 2.21s-.99 2.21-2.21 2.21zm15.48 13.87h-3.84v-6.04c0-1.43-.03-3.27-2-3.27-2.01 0-2.32 1.57-2.32 3.16v6.15h-3.84V8.04h3.69v1.69h.05c.51-.97 1.76-1.99 3.64-1.99 3.9 0 4.62 2.56 4.62 5.89v6.79z"></path></svg>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <section id="hero" class="hero animated fade-in">
+            <h2 class="slide-up">Mohammed Arfat</h2>
+            <p class="slide-up" style="animation-delay: 0.2s;">Full Stack Developer | Building User-Friendly Experiences</p>
+            <a href="PLACEHOLDER_CV_LINK.pdf" target="_blank" class="btn slide-up" style="animation-delay: 0.4s;" aria-label="Download my Resume/CV">Download CV</a>
+        </section>
+
+        <section id="about" class="animated fade-in slide-up">
+            <h2>About Me</h2>
+            <p>I'm Arfat, a Full Stack web developer based in Malegaon. My skills include HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Redux, Prisma, MongoDB, PostgreSQL and Tailwind CSS. I'm passionate about web development and continuously learn to craft user-friendly experiences. Check my github for new projects.</p>
+            <p>I've completed projects like a Netflix clone and an e-commerce web app, showcasing my dedication to practical learning and my tech stack is regularly updated. I'm eager to join a dynamic team, contributing creativity and technical expertise to innovate and captivate users through web development.</p>
+        </section>
+
+        <section id="skills" class="animated fade-in slide-up">
+            <h2>Skills & Proficiencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">HTML</div>
+                <div class="skill-card">CSS</div>
+                <div class="skill-card">JavaScript</div>
+                <div class="skill-card">TypeScript</div>
+                <div class="skill-card">ReactJS</div>
+                <div class="skill-card">NextJS</div>
+                <div class="skill-card">Redux</div>
+                <div class="skill-card">Prisma</div>
+                <div class="skill-card">MongoDB</div>
+                <div class="skill-card">PostgreSQL</div>
+                <div class="skill-card">Firebase</div>
+                <div class="skill-card">Git & Github</div>
+                <div class="skill-card">Tailwind CSS</div>
+                <div class="skill-card">Teamwork</div>
+                <div class="skill-card">Front-end Dev</div>
+                <div class="skill-card">Prompt Engineering</div>
+            </div>
+        </section>
+
+        <section id="experience" class="animated fade-in slide-up">
+            <h2>Experience</h2>
+            <div class="job-entry">
+                <h4>Engineer Intern</h4>
+                <p>Luis - Remote</p>
+                <p>Feb 2025 - Ongoing</p>
+                <p>Luis is a freelancer from Mexico. I am working with him on his ongoing projects. I learn with hands-on work with projects.</p>
+            </div>
+            <div class="job-entry">
+                <h4>Graphic Designer Intern</h4>
+                <p>FRIZZY FASHIONISTA - Remote</p>
+                <p>24 Weeks</p>
+                <p>Contributed to graphic design tasks and projects remotely for FRIZZY FASHIONISTA.</p>
+            </div>
+        </section>
+
+        <section id="projects" class="animated fade-in slide-up">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>Data Visualization Dashboard</h4>
+                        <p>A dashboard for visualizing data, showcasing data handling and presentation skills.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/Data-Visualization-Dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://data-visualization-dashboard-pi.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>Streamix (Movie listing and Streaming)</h4>
+                        <p>A web application for listing movies and streaming content, demonstrating media handling and UI design.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/streamix" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://streamix-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>Eshop (E-commerce Web app)</h4>
+                        <p>A full-fledged e-commerce platform, showcasing skills in product management, carts, and user authentication.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/eShop" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://eshop-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>Arfat Chat (Real Time Chatting Web App)</h4>
+                        <p>A real-time chat application demonstrating WebSocket integration and instant messaging features.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/chat" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://chat-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>Notion Clone</h4>
+                        <p>A recreation of Notion's core functionalities, highlighting complex UI and data management.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/notion-clone" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://notion-clone-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>Email Client (Email Client UI)</h4>
+                        <p>A user interface for an email client, focusing on responsive design and intuitive navigation.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/EmailClientAppReactJS" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://email-client-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="animated fade-in slide-up">
+            <h2>Education</h2>
+            <div class="education-entry">
+                <h4>BA (Economic)</h4>
+                <p>Ongoing</p>
+            </div>
+            <div class="education-entry">
+                <h4>12th (Science)</h4>
+                <p>2023</p>
+            </div>
+        </section>
+
+        <section id="contact" class="animated fade-in slide-up">
+            <h2>Get In Touch</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.03 21 3 13.97 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.47.57 3.58.1.35.01.75-.25 1.02L6.62 10.79z" fill="currentColor"/></svg>
+                    <a href="tel:+917020660977">+91 702066 0977</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/></svg>
+                    <a href="mailto:arfat19118@gmail.com">arfat19118@gmail.com</a>
+                </div>
+            </div>
+            <div class="main-content social-links">
+                <a href="https://github.com/mdarfatwork" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.866 8.135 6.839 9.407.5.09.682-.217.682-.483 0-.238-.007-.872-.012-1.71-2.782.604-3.369-1.34-3.369-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.619.069-.607.069-.607 1.004.072 1.532 1.031 1.532 1.76.938.64 2.457.458 3.04.35.09-.271.35-1.031.637-1.268-2.336-.264-4.789-1.17-4.789-5.208 0-1.149.409-2.091 1.082-2.833-.109-.264-.47-1.341.103-2.793 0 0 .887-.284 2.903 1.08.84-.233 1.74-.35 2.64-.35.9 0 1.8.117 2.64.35 2.016-1.364 2.903-1.08 2.903-1.08.573 1.452.212 2.529.103 2.793.673.742 1.082 1.684 1.082 2.833 0 4.049-2.458 4.941-4.798 5.20.378.327.718.973.718 1.968 0 1.424-.012 2.573-.012 2.915 0 .268.18.577.688.484C21.137 20.134 24 16.42 24 12c0-5.523-4.477-10-10-10z"></path></svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/momin-mohammed-arfat/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.34 20.42H3.5V8.04h3.84v12.38zM5.42 6.55c-1.22 0-2.22-.99-2.22-2.21S4.2 2.13 5.42 2.13c1.22 0 2.21.99 2.21 2.21s-.99 2.21-2.21 2.21zm15.48 13.87h-3.84v-6.04c0-1.43-.03-3.27-2-3.27-2.01 0-2.32 1.57-2.32 3.16v6.15h-3.84V8.04h3.69v1.69h.05c.51-.97 1.76-1.99 3.64-1.99 3.9 0 4.62 2.56 4.62 5.89v6.79z"></path></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mohammed Arfat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section.animated');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.1 // When 10% of the target is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: Unobserve after animation to prevent re-triggering
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Ensure hero section is visible immediately (if not scrolled)
+            const hero = document.getElementById('hero');
+            if (hero) {
+                hero.classList.add('is-visible');
+            }
+
+            // Smooth scrolling for sidebar navigation
+            document.querySelectorAll('.sidebar nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Arfat - Full Stack Developer Portfolio</title>
+    <meta name="description" content="Mohammed Arfat, a passionate Full Stack Web Developer proficient in HTML, CSS, JavaScript, ReactJS, NextJS, and MongoDB. Showcasing modern web projects and skills.">
+    <meta name="keywords" content="Mohammed Arfat, Full Stack Developer, Web Developer, ReactJS, NextJS, JavaScript, Node.js, MongoDB, Portfolio, Frontend, Backend">
+    <meta property="og:title" content="Mohammed Arfat - Full Stack Developer Portfolio">
+    <meta property="og:description" content="Mohammed Arfat, a passionate Full Stack Web Developer showcasing modern web projects and skills.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mdarfat.dev"> <!-- Placeholder, replace with actual URL if known -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0F172A;
+            --text-off-white: #F8FAFC;
+            --accent-green: #22C55E;
+            --card-bg: #1A243F; /* Slightly lighter dark for cards */
+            --shadow-color: rgba(0, 0, 0, 0.2);
+            --neon-glow: 0 0 10px var(--accent-green), 0 0 20px var(--accent-green), 0 0 30px var(--accent-green);
+        }
+
+        /* Base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-off-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        a {
+            color: var(--accent-green);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #16A34A; /* Darker green on hover */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        [data-animate] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        [data-animate].animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-dark);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-off-white);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-off-white);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-green);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70vh; /* Adjust height as needed */
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(15, 23, 42, 0.8) 50%, var(--bg-dark) 100%);
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(34, 197, 94, 0.1) 0%, transparent 70%);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--text-off-white);
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-off-white);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background-color: var(--accent-green);
+            color: var(--bg-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .hero .cta-button:hover {
+            background-color: #16A34A;
+            transform: translateY(-2px);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-green);
+            position: relative;
+            font-weight: 600;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-green);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 16px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+
+        /* About Section */
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: rgba(248, 250, 252, 0.9);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .skill-item svg {
+            color: var(--accent-green);
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .skill-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-off-white);
+        }
+
+        .skill-item p {
+            font-size: 0.95rem;
+            color: rgba(248, 250, 252, 0.8);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .experience-item .date {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            min-width: 100px;
+            text-align: right;
+            padding-top: 5px; /* Align with title */
+        }
+
+        .experience-item .details h3 {
+            font-size: 1.25rem;
+            color: var(--text-off-white);
+            margin-bottom: 0.2rem;
+        }
+
+        .experience-item .details p {
+            font-size: 0.95rem;
+            color: rgba(248, 250, 252, 0.8);
+        }
+
+        /* Projects Section */
+        .projects-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 1.5rem; /* Space for scrollbar */
+            gap: 1.5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .projects-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .projects-slider::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .projects-slider::-webkit-scrollbar-thumb {
+            background: var(--accent-green);
+            border-radius: 10px;
+        }
+
+        .project-card {
+            flex: 0 0 320px; /* Fixed width for project cards */
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: auto; /* Allow height to adjust based on content */
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-off-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: rgba(248, 250, 252, 0.8);
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Make description take up available space */
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap; /* Allow links to wrap */
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-green);
+        }
+
+        .project-links a svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Education Section */
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .education-item h3 {
+            font-size: 1.25rem;
+            color: var(--text-off-white);
+        }
+
+        .education-item p {
+            font-size: 1rem;
+            color: rgba(248, 250, 252, 0.8);
+            font-weight: 400;
+        }
+
+        /* Contact Section */
+        #contact .card {
+            border: 2px solid transparent; /* Base for border animation */
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            background-clip: padding-box;
+            border-radius: 12px;
+            background-color: var(--card-bg);
+            transition: box-shadow 0.3s ease;
+        }
+
+        #contact .card::before {
+            content: '';
+            position: absolute;
+            inset: -2px; /* Control border thickness with inset */
+            border-radius: 14px; /* Slightly larger than card for border-radius match */
+            padding: 2px; /* Creates the border effect */
+            background: linear-gradient(45deg, var(--accent-green), #16A34A); /* Gradient for the glow */
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            box-shadow: var(--neon-glow);
+            animation: pulse-glow 2s infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 10px var(--accent-green); }
+            to { box-shadow: var(--neon-glow); }
+        }
+
+        #contact h2 {
+            color: var(--text-off-white); /* Override section h2 color for this specific card */
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        #contact h2::after {
+            background-color: var(--text-off-white);
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-off-white);
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-green);
+            transform: translateY(-3px);
+        }
+
+        .social-links svg {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: rgba(248, 250, 252, 0.7);
+            border-top: 1px solid rgba(248, 250, 252, 0.1);
+            margin-top: 4rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                padding: 1rem 1rem;
+            }
+
+            .navbar-brand {
+                margin-bottom: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0 0.8rem 0.5rem;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            section h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            #about p {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .experience-item .date {
+                text-align: center;
+                min-width: unset;
+                margin-bottom: 0.5rem;
+            }
+
+            .projects-slider {
+                padding: 0 1rem 1.5rem;
+            }
+
+            .project-card {
+                flex: 0 0 90vw; /* Make cards almost full width on small screens */
+            }
+
+            .education-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .education-item p {
+                text-align: left;
+            }
+
+            #contact .card {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links li {
+                margin: 0 0.5rem 0.5rem;
+            }
+            .hero {
+                height: 100vh;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+            .project-card {
+                flex: 0 0 95vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#hero" class="navbar-brand">Mohammed Arfat</a>
+            <ul class="nav-links">
+                <li><a href="#about" aria-label="About section">About</a></li>
+                <li><a href="#skills" aria-label="Skills section">Skills</a></li>
+                <li><a href="#experience" aria-label="Experience section">Experience</a></li>
+                <li><a href="#projects" aria-label="Projects section">Projects</a></li>
+                <li><a href="#education" aria-label="Education section">Education</a></li>
+                <li><a href="#contact" aria-label="Contact section">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero">
+        <div class="hero-content" data-animate>
+            <h1>Mohammed Arfat</h1>
+            <p>Full Stack Developer | Building impactful web experiences</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="container" data-animate>
+            <h2>About Me</h2>
+            <p>I'm Arfat, a Full Stack web developer based in Malegaon. My skills include HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Redux, Prisma, MongoDB, PostgreSQL and Tailwind CSS. I'm passionate about web development and continuously learn to craft user-friendly experiences. Check my GitHub for new projects. I've completed projects like a Netflix clone and an e-commerce web app, showcasing my dedication to practical learning and my tech stack is regularly updated. I'm eager to join a dynamic team, contributing creativity and technical expertise to innovate and captivate users through web development.</p>
+        </section>
+
+        <section id="skills" class="container" data-animate>
+            <h2>Skills & Proficiencies</h2>
+            <div class="skills-grid">
+                <div class="card skill-item" data-animate>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    <div>
+                        <h3>Core Technologies</h3>
+                        <p>HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Tailwind CSS, Redux, Prisma, MongoDB, PostgreSQL, Firebase, Git and GitHub.</p>
+                    </div>
+                </div>
+                <div class="card skill-item" data-animate>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    <div>
+                        <h3>Teamwork & Detail</h3>
+                        <p>Strong collaboration, multitasking, and meticulous attention to detail in project execution.</p>
+                    </div>
+                </div>
+                <div class="card skill-item" data-animate>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    <div>
+                        <h3>Front End Development</h3>
+                        <p>Expertise in crafting responsive, user-friendly, and engaging web interfaces.</p>
+                    </div>
+                </div>
+                <div class="card skill-item" data-animate>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    <div>
+                        <h3>Prompt Engineering</h3>
+                        <p>Good knowledge of prompt engineering to increase efficiency and leverage AI tools effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="container" data-animate>
+            <h2>Experience</h2>
+            <div class="experience-timeline">
+                <div class="card experience-item" data-animate>
+                    <div class="date">Feb 2025 - Ongoing</div>
+                    <div class="details">
+                        <h3>Engineer Intern - Luis</h3>
+                        <p>Remote</p>
+                        <p>Collaborating with Luis, a freelancer from Mexico, on ongoing web projects, gaining hands-on experience and contributing to various development tasks.</p>
+                    </div>
+                </div>
+                <div class="card experience-item" data-animate>
+                    <div class="date">24 Weeks</div>
+                    <div class="details">
+                        <h3>Graphic Designer Intern - FRIZZY FASHIONISTA</h3>
+                        <p>Remote</p>
+                        <p>Contributed to design projects, enhancing visual content and user engagement for the fashion brand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="container" data-animate>
+            <h2>My Projects</h2>
+            <div class="projects-slider">
+                <div class="card project-card" data-animate>
+                    <div>
+                        <h3>Data Visualization Dashboard</h3>
+                        <p>An interactive dashboard for visualizing complex data sets, providing clear insights and user-friendly navigation.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/Data-Visualization-Dashboard" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Data Visualization Dashboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://data-visualization-dashboard-pi.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Data Visualization Dashboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="card project-card" data-animate>
+                    <div>
+                        <h3>Streamix (Movie listing and Streaming)</h3>
+                        <p>A web application for browsing movie listings and streaming content, offering a rich user experience.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/streamix" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Streamix">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://streamix-arfat.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Streamix">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="card project-card" data-animate>
+                    <div>
+                        <h3>Eshop (E-commerce Web app)</h3>
+                        <p>A fully functional e-commerce platform demonstrating product listings, cart management, and order processing capabilities.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/eShop" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Eshop">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://eshop-arfat.web.app" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Eshop">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="card project-card" data-animate>
+                    <div>
+                        <h3>Arfat Chat (Real Time Chatting Web App)</h3>
+                        <p>A real-time chat application demonstrating WebSocket integration for instant messaging functionality.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/chat" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Arfat Chat">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://chat-arfat.web.app" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Arfat Chat">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="card project-card" data-animate>
+                    <div>
+                        <h3>Notion Clone</h3>
+                        <p>A recreation of the popular note-taking and workspace application, showcasing robust UI/UX design and data management.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/notion-clone" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Notion Clone">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://notion-clone-arfat.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Notion Clone">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="card project-card" data-animate>
+                    <div>
+                        <h3>Email Client (Email Client UI)</h3>
+                        <p>A user interface for an email client, focusing on intuitive design and essential email management features.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/EmailClientAppReactJS" target="_blank" rel="noopener noreferrer" aria-label="GitHub repository for Email Client">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://email-client-arfat.web.app" target="_blank" rel="noopener noreferrer" aria-label="Live demo of Email Client">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="container" data-animate>
+            <h2>Education</h2>
+            <div class="education-list">
+                <div class="card education-item" data-animate>
+                    <h3>BA (Economic)</h3>
+                    <p>Ongoing</p>
+                </div>
+                <div class="card education-item" data-animate>
+                    <h3>12th (Science)</h3>
+                    <p>2023</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container" data-animate>
+            <div class="card" data-animate>
+                <h2>Connect With Me</h2>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:arfat19118@gmail.com" aria-label="Send an email to Mohammed Arfat">arfat19118@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+917020660977" aria-label="Call Mohammed Arfat">+91 702066 0977</a></p>
+                    <p>Location: Malegaon, Dist. Nashik, MH - 423203, India</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/mdarfatwork" target="_blank" rel="noopener noreferrer" aria-label="Mohammed Arfat's GitHub profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.492.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/momin-mohammed-arfat/" target="_blank" rel="noopener noreferrer" aria-label="Mohammed Arfat's LinkedIn profile">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.699 0-1.271-.572-1.271-1.271s.572-1.27 1.271-1.27 1.271.572 1.271 1.271-.572 1.27-1.271 1.27zm10 6.891h-2v-3.385c0-.792-.014-1.816-1.101-1.816-1.102 0-1.274.861-1.274 1.761v3.44h-2v-6h1.996v.857h.027c.277-.52.955-.907 1.96-.907 2.103 0 2.494 1.382 2.494 3.179v3.871h-.002z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Mohammed Arfat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scroll for nav links
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Remove active class from all and add to clicked
+                    document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Set active class on initial load for current section
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Adjust as needed
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.3 }); // Lower threshold for section activation
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Hero section special handling for first load
+            const heroLink = document.querySelector('.nav-links a[href="#hero"]');
+            if (heroLink) {
+                const heroObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            navLinks.forEach(link => link.classList.remove('active'));
+                            heroLink.classList.add('active');
+                        }
+                    });
+                }, { threshold: 0.5 });
+                heroObserver.observe(document.querySelector('#hero'));
+            }
+
+            // Scroll animations using Intersection Observer
+            const animateElements = document.querySelectorAll('[data-animate]');
+
+            const animateObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-visible');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            animateElements.forEach(element => {
+                animateObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

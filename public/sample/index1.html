@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohammed Arfat is a Full Stack Developer specializing in crafting user-friendly web experiences with HTML, CSS, JavaScript, ReactJS, NextJS, and more. Explore his projects and skills.">
+    <meta name="keywords" content="Mohammed Arfat, Full Stack Developer, Web Developer, ReactJS, NextJS, JavaScript, Portfolio, Projects, HTML, CSS, Node.js, MERN, Frontend, Backend">
+    <meta property="og:title" content="Mohammed Arfat - Full Stack Developer Portfolio">
+    <meta property="og:description" content="Mohammed Arfat is a Full Stack Developer specializing in crafting user-friendly web experiences with HTML, CSS, JavaScript, ReactJS, NextJS, and more. Explore his projects and skills.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/mohammed-arfat-portfolio"> <!-- Replace with actual URL -->
+    <meta property="og:image" content="https://yourdomain.com/profile-image.jpg"> <!-- Replace with actual image URL -->
+    <meta property="og:site_name" content="Mohammed Arfat's Portfolio">
+    <title>Mohammed Arfat - Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #FFFFFF;
+            --text-color: #333333;
+            --heading-color: #1a1a1a;
+            --accent-color: #3B82F6; /* Blue-500 */
+            --light-grey: #f0f0f0;
+            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            --border-radius: 8px;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--primary-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        h1, h2, h3 {
+            color: var(--heading-color);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.8rem; line-height: 1.1; }
+        h2 { font-size: 2.2rem; margin-top: var(--spacing-lg); }
+        h3 { font-size: 1.6rem; }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2563eb; /* Darker accent on hover */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-color);
+            color: #fff;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .text-center { text-align: center; }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+        }
+
+        .nav-list a {
+            color: var(--heading-color);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-list a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: var(--spacing-lg) 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section:nth-child(even) {
+            background-color: var(--light-grey);
+        }
+
+        /* Hero Section */
+        #hero {
+            padding-top: calc(var(--spacing-lg) + 50px); /* Adjust for fixed nav */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-bg);
+            text-align: center; /* Default for mobile */
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            background-color: var(--light-grey);
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* About Section */
+        #about h3 { margin-top: var(--spacing-md); margin-bottom: var(--spacing-sm); }
+        #about p { margin-bottom: var(--spacing-sm); }
+        #about ul { list-style: none; padding-left: 0; margin-bottom: var(--spacing-md); }
+        #about ul li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; }
+        #about ul li::before { content: '•'; color: var(--accent-color); position: absolute; left: 0; }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .skill-card {
+            background-color: var(--primary-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--heading-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to 1 column on mobile */
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .project-card {
+            background-color: var(--primary-bg);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-links a {
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        #contact .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: var(--spacing-md);
+            align-items: center;
+            text-align: center;
+        }
+
+        #contact .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        #contact .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            justify-content: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--light-grey);
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .social-links a svg {
+            fill: var(--text-color);
+            transition: fill 0.3s ease;
+        }
+
+        .social-links a:hover svg {
+            fill: #fff;
+        }
+
+        .social-links svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: var(--spacing-md) 0;
+            font-size: 0.9rem;
+            color: #777;
+            border-top: 1px solid var(--light-grey);
+            margin-top: var(--spacing-md);
+        }
+
+        /* Media Queries for responsiveness */
+        @media (min-width: 768px) {
+            h1 { font-size: 3.8rem; }
+            h2 { font-size: 2.8rem; }
+            h3 { font-size: 1.8rem; }
+
+            #hero {
+                text-align: left;
+            }
+            .hero-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .hero-text {
+                margin-right: var(--spacing-lg);
+            }
+            .hero-image {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+            }
+
+            #contact .contact-info {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+        }
+
+        /* Utility for screen readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-nav">
+        <nav class="container" aria-label="Main Navigation">
+            <ul class="nav-list">
+                <li><a href="#hero" aria-label="Go to Hero section">Home</a></li>
+                <li><a href="#about" aria-label="Go to About section">About</a></li>
+                <li><a href="#skills" aria-label="Go to Skills section">Skills</a></li>
+                <li><a href="#projects" aria-label="Go to Projects section">Projects</a></li>
+                <li><a href="#contact" aria-label="Go to Contact section">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content animate-on-scroll">
+                <div class="hero-text">
+                    <h1>Mohammed Arfat</h1>
+                    <p class="lead" style="font-size: 1.5rem; color: #555; margin-bottom: 1.5rem;">Full Stack Developer</p>
+                    <a href="#contact" class="btn" aria-label="Contact Mohammed Arfat">Get in Touch</a>
+                </div>
+                <div class="hero-image" role="img" aria-label="Placeholder for Mohammed Arfat's profile photo">
+                    <!-- Placeholder for profile image -->
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor" style="color: #777;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container animate-on-scroll">
+                <h2 class="text-center">About Me</h2>
+                <p>I'm Arfat, a Full Stack web developer based in Malegaon. My skills include HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Redux, Prisma, MongoDB, PostgreSQL and Tailwind CSS. I'm passionate about web development and continuously learn to craft user-friendly experiences. Check my github for new projects. I've completed projects like a Netflix clone and an e-commerce web app, showcasing my dedication to practical learning and my tech stack is regularly updated. I'm eager to join a dynamic team, contributing creativity and technical expertise to innovate and captivate users through web development.</p>
+                
+                <h3>Experience</h3>
+                <div class="experience-item">
+                    <h4>Engineer Inter</h4>
+                    <p><strong>Luis - Remote</strong> | Feb 2025 - ongoing</p>
+                    <p>Working with Luis, a freelancer from Mexico, on ongoing projects to gain hands-on experience.</p>
+                </div>
+                <div class="experience-item" style="margin-top: var(--spacing-sm);">
+                    <h4>Graphic Designer Inter</h4>
+                    <p><strong>FRIZZY FASHIONISTA - Remote</strong> | 24 Weeks</p>
+                </div>
+
+                <h3>Education</h3>
+                <div class="education-item">
+                    <h4>BA (Economic)</h4>
+                    <p>Ongoing</p>
+                </div>
+                <div class="education-item" style="margin-top: var(--spacing-sm);">
+                    <h4>12th (Science)</h4>
+                    <p>2023</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container animate-on-scroll">
+                <h2 class="text-center">Skills & Proficiencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <p>HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Tailwind CSS, Redux, Prisma, MongoDB, PostgreSQL, Firebase, Git and Github</p>
+                    </div>
+                    <div class="skill-card">
+                        <p>Teamwork, multitasking, and attention to detail</p>
+                    </div>
+                    <div class="skill-card">
+                        <p>Front end web development</p>
+                    </div>
+                    <div class="skill-card">
+                        <p>Good Knowledge of Prompt Engineering to increase efficiency</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container animate-on-scroll">
+                <h2 class="text-center">My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Data Visualization Dashboard</h3>
+                        <p>A dashboard for data visualization.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/Data-Visualization-Dashboard" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://data-visualization-dashboard-pi.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Streamix (Movie listing and Streaming)</h3>
+                        <p>Application for listing and streaming movies.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/streamix" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://streamix-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Eshop (E-commerce Web app)</h3>
+                        <p>A full-fledged e-commerce web application.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/eShop" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://eshoparfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Arfat Chat (Real Time Chatting Web App)</h3>
+                        <p>A real-time chatting web application.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/chat" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://chat-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Notion Clone</h3>
+                        <p>A clone of the popular Notion application.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/notion-clone" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://notion-clone-arfat.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Email Client (Email Client UI)</h3>
+                        <p>User interface for an email client.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mdarfatwork/EmailClientAppReactJS" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            <a href="https://email-client-arfat.web.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container animate-on-scroll">
+                <h2 class="text-center">Get in Touch</h2>
+                <p class="text-center" style="margin-bottom: var(--spacing-md);">Feel free to connect with me!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <a href="mailto:arfat19118@gmail.com" aria-label="Email Mohammed Arfat at arfat19118@gmail.com">arfat19118@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-5.75-5.75A19.79 19.79 0 0 1 2.05 4.18 2 2 0 0 1 4 2h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2.76 17.05 17.05 0 0 0 5.46 5.46 2 2 0 0 1 2.76-2h7a2 2 0 0 1 2 2z"></path></svg>
+                        <a href="tel:+917020660977" aria-label="Call Mohammed Arfat at plus nine one seven zero two zero six six zero nine seven seven">+91 702066 0977</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/mdarfatwork" target="_blank" rel="noopener noreferrer" aria-label="Mohammed Arfat's GitHub profile">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.082-.746.084-.729.084-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.798 24 17.3 24 12c0-6.627-5.372-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/momin-mohammed-arfat/" target="_blank" rel="noopener noreferrer" aria-label="Mohammed Arfat's LinkedIn profile">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0zM7.18 20.45H3.61V8.46h3.57v11.99zM5.39 6.94c-1.23 0-2.23-1-.23-2.22 0-1.21 1-2.2 2.22-2.2s2.22 1 2.22 2.2c0 1.22-1 2.22-2.22 2.22zm15.06 13.51h-3.57V14.5c0-1.42-.51-2.38-1.78-2.38-1.42 0-2.27 1.06-2.65 2.08-.13.36-.16.85-.16 1.34v5H9.72s.05-10.87 0-11.99h3.56v1.54s.5-1.39 3.19-1.39c3.74 0 6.54 2.44 6.54 7.74v4.1H20.45z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Mohammed Arfat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Smooth scroll animation with Intersection Observer
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the section is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

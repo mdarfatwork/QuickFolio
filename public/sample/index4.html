@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Arfat - Full Stack Developer Portfolio</title>
+    <meta name="description" content="Mohammed Arfat's personal portfolio showcasing full-stack web development skills, projects, and experience in modern web technologies like React, Next.js, and Node.js.">
+    <meta name="keywords" content="Mohammed Arfat, Full Stack Developer, ReactJS, NextJS, Node.js, Web Development, Portfolio, JavaScript, TypeScript, MongoDB, PostgreSQL, Frontend, Backend">
+    <meta name="author" content="Mohammed Arfat">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourportfolio.com/"> <!-- Placeholder -->
+    <meta property="og:title" content="Mohammed Arfat - Full Stack Developer Portfolio">
+    <meta property="og:description" content="Mohammed Arfat's personal portfolio showcasing full-stack web development skills, projects, and experience in modern web technologies.">
+    <meta property="og:image" content="https://yourportfolio.com/social-share.jpg"> <!-- Placeholder -->
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-light: #F9FAFB;
+            --accent-pink: #F43F5E;
+            --accent-indigo: #6366F1;
+            --text-dark: #333;
+            --text-light: #666;
+            --card-bg: #fff;
+            --shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px, rgba(0, 0, 0, 0.05) 0px 2px 4px 0px;
+            --hover-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent-indigo);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-pink);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.8em;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        section {
+            padding: 4rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-divider::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent-pink), var(--accent-indigo));
+            margin: 0 auto 2.5rem;
+            border-radius: 2px;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 6rem 2rem;
+            }
+        }
+
+        /* Hero Section */
+        #hero {
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-pink) 0%, var(--accent-indigo) 100%);
+            color: white;
+            padding: 8rem 1rem 6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; /* Full viewport height */
+            box-shadow: var(--hover-shadow);
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1);
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        #hero .tagline {
+            font-size: 1.5rem;
+            font-weight: 600;
+            opacity: 0.9;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        /* Card styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) rotateZ(1deg);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-indigo);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-duration {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        #skills .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background-color: var(--accent-indigo);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            cursor: default;
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-2px);
+            background-color: var(--accent-pink);
+        }
+
+        .skill-group {
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .skill-group h3 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-pink);
+        }
+
+        /* Projects Section - Masonry like */
+        #projects .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card .card-description {
+            flex-grow: 1; /* Allows description to take up available space */
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5em;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-indigo);
+            padding: 0.5em 1em;
+            border: 1px solid var(--accent-indigo);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .project-links a:hover {
+            background-color: var(--accent-indigo);
+            color: white;
+            border-color: var(--accent-indigo);
+            transform: translateY(-2px);
+        }
+
+        .project-links a svg {
+            fill: currentColor;
+            width: 1em;
+            height: 1em;
+        }
+
+        /* Experience & Education */
+        #experience ul, #education ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #experience li, #education li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #experience li::before, #education li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5em;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-pink);
+            border-radius: 50%;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        @media (min-width: 600px) {
+            .contact-info {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .contact-item svg {
+            fill: var(--accent-indigo);
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-indigo);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-pink);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .social-links a svg {
+            fill: white;
+            width: 28px;
+            height: 28px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background-color: #eef2f5;
+        }
+
+        /* Scroll Progress Indicator (Optional but nice) */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent-pink), var(--accent-indigo));
+            width: 0%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress"></div>
+
+    <main>
+        <section id="hero" aria-label="Introduction to Mohammed Arfat">
+            <img alt="Mohammed Arfat Profile Picture" class="profile-pic">
+            <h1>Mohammed Arfat</h1>
+            <p class="tagline">Full Stack Developer | Crafting Modern Web Experiences</p>
+            <div class="social-links">
+                <a href="https://github.com/mdarfatwork" target="_blank" aria-label="Visit Mohammed Arfat's GitHub profile">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/momin-mohammed-arfat/" target="_blank" aria-label="Visit Mohammed Arfat's LinkedIn profile">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.614 0 4.28 2.37 4.28 5.424v6.23H20.447zM5.009 6.25c-1.166 0-2.109-.933-2.109-2.093s.943-2.094 2.109-2.094c1.167 0 2.109.934 2.109 2.094S6.176 6.25 5.009 6.25zm1.787 14.202H3.22V9h3.576v11.452zM22.227 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.456c.98 0 1.773-.773 1.773-1.729V1.729C24 .774 23.207 0 22.227 0z"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" class="section-divider" aria-labelledby="about-heading">
+            <h2 id="about-heading" style="text-align: center;">About Me</h2>
+            <p>I'm Arfat, a Full Stack web developer based in Malegaon. My skills include HTML, CSS, JavaScript, TypeScript, ReactJS, NextJS, Redux, Prisma, MongoDB, PostgreSQL and Tailwind CSS. I'm passionate about web development and continuously learn to craft user-friendly experiences. Check my GitHub for new projects.</p>
+            <p>I've completed projects like a Netflix clone and an e-commerce web app, showcasing my dedication to practical learning and my tech stack is regularly updated.</p>
+            <p>I'm eager to join a dynamic team, contributing creativity and technical expertise to innovate and captivate users through web development.</p>
+        </section>
+
+        <section id="skills" class="section-divider" aria-labelledby="skills-heading">
+            <h2 id="skills-heading" style="text-align: center;">Skills & Proficiencies</h2>
+            <div class="card">
+                <div class="skill-group">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-grid">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">TypeScript</span>
+                        <span class="skill-badge">ReactJS</span>
+                        <span class="skill-badge">NextJS</span>
+                        <span class="skill-badge">Tailwind CSS</span>
+                        <span class="skill-badge">Redux</span>
+                        <span class="skill-badge">Prisma</span>
+                        <span class="skill-badge">MongoDB</span>
+                        <span class="skill-badge">PostgreSQL</span>
+                        <span class="skill-badge">Firebase</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Github</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h3>Other Proficiencies</h3>
+                    <div class="skills-grid">
+                        <span class="skill-badge">Teamwork</span>
+                        <span class="skill-badge">Multitasking</span>
+                        <span class="skill-badge">Attention to Detail</span>
+                        <span class="skill-badge">Front-end Development</span>
+                        <span class="skill-badge">Prompt Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-divider" aria-labelledby="projects-heading">
+            <h2 id="projects-heading" style="text-align: center;">Projects</h2>
+            <div class="projects-grid">
+                <article class="card project-card">
+                    <h3 class="card-title">Data Visualization Dashboard</h3>
+                    <p class="card-description">A dashboard project focused on displaying data visually. Enhances data interpretation and provides actionable insights.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/Data-Visualization-Dashboard" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://data-visualization-dashboard-pi.vercel.app" target="_blank">Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <h3 class="card-title">Streamix (Movie listing & Streaming)</h3>
+                    <p class="card-description">A comprehensive movie listing and streaming application, providing users with an immersive entertainment experience.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/streamix" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://streamix-arfat.vercel.app" target="_blank">Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <h3 class="card-title">Eshop (E-commerce Web App)</h3>
+                    <p class="card-description">A fully functional e-commerce web application, demonstrating features like product listings, shopping cart, and checkout.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/eShop" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://eshop-arfat.web.app" target="_blank">Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <h3 class="card-title">Arfat Chat (Real-Time Chatting Web App)</h3>
+                    <p class="card-description">A real-time chatting application, facilitating instant communication between users.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/chat" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://chat-arfat.web.app" target="_blank">Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <h3 class="card-title">Notion Clone</h3>
+                    <p class="card-description">A recreation of the popular Notion app, demonstrating robust note-taking and organization features.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/notion-clone" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://notion-clone-arfat.vercel.app" target="_blank">Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <h3 class="card-title">Email Client (Email Client UI)</h3>
+                    <p class="card-description">A user interface for an email client, showcasing intuitive design and user experience principles.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/mdarfatwork/EmailClientAppReactJS" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.73.084-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                            GitHub
+                        </a>
+                        <a href="https://email-client-arfat.web.app" target="_blank">Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="experience" class="section-divider" aria-labelledby="experience-heading">
+            <h2 id="experience-heading" style="text-align: center;">Experience</h2>
+            <div class="card">
+                <h3 class="card-title">Engineer Intern</h3>
+                <p class="card-subtitle">Luis - Remote</p>
+                <p class="card-description">Luis is a freelancer from Mexico. I am working with him on his ongoing projects. I learn with hands-on work with projects.</p>
+                <p class="card-duration">Feb 2025 - ongoing</p>
+            </div>
+            <div class="card">
+                <h3 class="card-title">Graphic Designer Intern</h3>
+                <p class="card-subtitle">FRIZZY FASHIONISTA - Remote</p>
+                <p class="card-duration">24 Weeks</p>
+            </div>
+        </section>
+
+        <section id="education" class="section-divider" aria-labelledby="education-heading">
+            <h2 id="education-heading" style="text-align: center;">Education</h2>
+            <div class="card">
+                <ul>
+                    <li>
+                        <h3 class="card-title" style="margin-bottom: 0.2em;">BA (Economic)</h3>
+                        <p class="card-duration">Ongoing</p>
+                    </li>
+                    <li>
+                        <h3 class="card-title" style="margin-bottom: 0.2em;">12th (Science)</h3>
+                        <p class="card-duration">2023</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="section-divider" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" style="text-align: center;">Get in Touch</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">Feel free to reach out to me for collaborations, questions, or just a friendly chat. I'm always open to new opportunities!</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <a href="mailto:arfat19118@gmail.com" aria-label="Send an email to Mohammed Arfat">arfat19118@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-3.67-3.67A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.18 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <a href="tel:+917020660977" aria-label="Call Mohammed Arfat">+91 702066 0977</a>
+                </div>
+                <div class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span>Malegaon, Nashik, MH - 423203</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mohammed Arfat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const scrollProgress = document.querySelector('.scroll-progress');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-visible');
+                    } else {
+                        // Optional: remove class when out of view if you want repeat animations on scroll
+                        // entry.target.classList.remove('fade-in-visible');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Scroll progress bar
+            const updateScrollProgress = () => {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const progress = (scrollTop / scrollHeight) * 100;
+                scrollProgress.style.width = progress + '%';
+            };
+
+            window.addEventListener('scroll', updateScrollProgress);
+            updateScrollProgress(); // Initial call
+        });
+    </script>
+</body>
+</html>
