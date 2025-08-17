@@ -34,20 +34,31 @@ import {
 const isDev = process.env.NODE_ENV === "development";
 
 export default function PortfolioForm() {
-  const [portfolioHTML, setPortfolioHTML] = useState<string | null>(
-    isDev ? portfolio : null
-  );
+  const [portfolioHTML, setPortfolioHTML] = useState<string | null>(null);
 
   const form = useForm<GeneratePortfolioSchemaType>({
     resolver: zodResolver(generatePortfolioSchema),
-    defaultValues: {
-      preferredName: "",
-      role: "",
-      googleFont: "",
-      instructions: "",
-      socialLinks: [""],
-      resume: undefined,
-    },
+    defaultValues: isDev
+      ? {
+          preferredName: "Mohammed Arfat",
+          role: "Full Stack Developer",
+          googleFont: "https://fonts.google.com/specimen/Poppins",
+          instructions:
+            "Make it simple, clean and professional, and use the grey theme",
+          socialLinks: [
+            "https://github.com/mdarfatwork",
+            "https://www.linkedin.com/in/momin-mohammed-arfat/",
+          ],
+          resume: undefined,
+        }
+      : {
+          preferredName: "",
+          role: "",
+          googleFont: "",
+          instructions: "",
+          socialLinks: [""],
+          resume: undefined,
+        },
   });
 
   const { execute, isExecuting } = useAction(generatePortfolio, {
@@ -107,9 +118,16 @@ export default function PortfolioForm() {
       </h2>
 
       {isExecuting ? (
-        <div className="flex flex-col items-center justify-center w-full gap-3 py-16 text-gray-500 border-2 border-dashed rounded-md">
-          <Loader2 className="w-6 h-6 animate-spin" />
-          <p className="text-sm">Generating your portfolio...</p>
+        <div className="flex flex-col items-center justify-center w-full gap-6 py-16 text-center border-2 border-dashed rounded-md bg-gradient-to-r from-indigo-50 via-pink-50 to-purple-50">
+          <div className="flex gap-3 text-3xl animate-bounce">
+            <span>🎨</span>
+            <span>⚙️</span>
+            <span>🔬</span>
+            <span>💡</span>
+          </div>
+          <p className="text-base font-medium text-gray-700 animate-pulse">
+            Crafting a unique blend of art & science for your portfolio...
+          </p>
         </div>
       ) : portfolioHTML ? (
         <div className="relative flex flex-col gap-6">
@@ -149,7 +167,7 @@ export default function PortfolioForm() {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(execute)}
-            className="p-6 space-y-6 bg-indigo-100 rounded-md shadow-sm"
+            className="p-6 space-y-6 bg-white rounded-md shadow-md"
           >
             <FormField
               control={form.control}
