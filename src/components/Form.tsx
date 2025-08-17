@@ -4,8 +4,7 @@ import { useState } from "react";
 import { useAction } from "next-safe-action/hooks";
 import { generatePortfolio } from "@/server/action";
 import { toast } from "sonner";
-import { Loader2, UploadIcon, X, Plus, Trash } from "lucide-react";
-import { portfolio } from "@/sample/portfolio";
+import { UploadIcon, X, Plus, Trash } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
