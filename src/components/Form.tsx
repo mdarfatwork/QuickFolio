@@ -139,6 +139,7 @@ export default function PortfolioForm() {
             <Button
               size="icon"
               variant="ghost"
+              aria-label="remove portfolio"
               className="absolute text-white rounded-full shadow-md cursor-pointer bg-rose-600 top-3 right-3 hover:bg-rose-700"
               onClick={() => setPortfolioHTML(null)}
             >
@@ -251,6 +252,7 @@ export default function PortfolioForm() {
                         <Button
                           type="button"
                           variant="ghost"
+                          aria-label="remove link"
                           size="icon"
                           onClick={() => {
                             const newLinks =
@@ -315,15 +317,15 @@ export default function PortfolioForm() {
                     <Dropzone value={dropzone}>
                       <DropZoneArea className="p-0 border-0">
                         <DropzoneTrigger className="flex flex-col items-center justify-center w-full gap-1 px-4 py-8 text-sm bg-transparent border-2 border-dashed rounded-md">
-                          <UploadIcon className="w-6 h-6 text-gray-500" />
-                          <p className="text-sm text-gray-500">
+                          <UploadIcon className="w-6 h-6 text-gray-600" />
+                          <p className="text-sm">
                             Drag & drop or{" "}
                             <span className="font-semibold text-indigo-600">
                               choose a PDF
                             </span>{" "}
                             to upload
                           </p>
-                          <p className="text-xs text-gray-400">
+                          <p className="text-xs">
                             Only PDF files allowed (max 2MB)
                           </p>
                         </DropzoneTrigger>

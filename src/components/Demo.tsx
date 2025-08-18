@@ -29,6 +29,7 @@ export default function Demo() {
                 src={demo.url}
                 className="w-full h-64 border-b"
                 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                title={demo.name}
               />
               <div className="flex items-center justify-between p-4">
                 <span className="font-medium">{demo.name}</span>
